@@ -9,7 +9,7 @@ tracking = (
     .filter(pl.col("frameType") != "BEFORE_SNAP")
     .filter(pl.col("time") <= datetime(2022, 9, 17, tzinfo=timezone.utc))
     .with_columns(
-        pl.col("gameId").cast(pl.Int128),
+        pl.col("gameId").cast(pl.Int64),
         pl.col("playId").cast(pl.Int64),
         pl.col("frameId").cast(pl.Int64),
         pl.col("nflId").cast(pl.Int64),
@@ -206,6 +206,8 @@ tracking_angle_rushers = (
         .otherwise(pl.col("turn_angle"))
     )
     .with_columns(prev_angle=pl.col("turn_angle").shift(1).over(["gameId", "playId", "bc_id"]))
+    .filter(pl.col("turn_angle").is_not_null())
+    .filter(pl.col("prev_angle").is_not_null())
 )
 
 # get the cumulative distance traveled by ball carrier

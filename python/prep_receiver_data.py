@@ -9,7 +9,7 @@ tracking = (
     .filter(pl.col("frameType") != "BEFORE_SNAP")
     .filter(pl.col("time") <= datetime(2022, 9, 17, tzinfo=timezone.utc))
     .with_columns(
-        pl.col("gameId").cast(pl.Int128),
+        pl.col("gameId").cast(pl.Int64),
         pl.col("playId").cast(pl.Int64),
         pl.col("frameId").cast(pl.Int64),
         pl.col("nflId").cast(pl.Int64),

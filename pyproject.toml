@@ -9,3 +9,9 @@ dependencies = [
     "pymc>=5.25.1",
     "ruff>=0.13.3",
 ]
+
+[tool.ruff]
+line-length = 88
+extend-ignore = ["E203"]
+# explicitly include .qmd files
+include = ["**/*.py", "**/*.qmd"]
