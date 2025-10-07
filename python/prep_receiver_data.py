@@ -184,6 +184,17 @@ tracking_count_features = (
     .group_by(["gameId", "playId", "frameId", "side"])
     .agg(n_left_bc=(pl.col("y") > pl.col("bc_y")).sum(), n_front_bc=(pl.col("x") > pl.col("bc_x")).sum())
     .pivot("side", values=["n_left_bc", "n_front_bc"])
+    .select(
+        [
+            "gameId",
+            "playId",
+            "frameId",
+            "n_left_bc_offense",
+            "n_left_bc_defense",
+            "n_front_bc_offense",
+            "n_front_bc_defense",
+        ]
+    )
 )
 
 # Calculating the turn angle for the receivers
