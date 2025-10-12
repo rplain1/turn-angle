@@ -49,3 +49,4 @@ vignettes/*.pdf
 
 *.rds
 *.parquet
+*.netcdf
