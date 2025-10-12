@@ -7,7 +7,7 @@ DATA_DIR = "~/git-repos/nfl-bdb-2025/raw-data/"
 tracking = (
     pl.scan_parquet("data/tracking.parquet")
     .filter(pl.col("frameType") != "BEFORE_SNAP")
-    .filter(pl.col("time") <= datetime(2022, 9, 17, tzinfo=timezone.utc))
+    # .filter(pl.col("time") <= datetime(2022, 9, 17, tzinfo=timezone.utc))
     .with_columns(
         pl.col("gameId").cast(pl.Int64),
         pl.col("playId").cast(pl.Int64),
