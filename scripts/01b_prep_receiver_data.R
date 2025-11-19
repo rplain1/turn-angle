@@ -25,7 +25,7 @@ tracking <- duckplyr::read_parquet_duckdb('data/tracking.parquet') |>
   dplyr::filter(
     frameType != 'BEFORE_SNAP',
     # filter a subset of data
-    time <= !!as.POSIXct('2022-09-17 00:00:00', tz = "UTC")
+    #time <= !!as.POSIXct('2022-09-17 00:00:00', tz = "UTC")
   ) |>
   collect()
 
